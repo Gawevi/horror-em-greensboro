@@ -81,7 +81,7 @@ function PlayerSheet(props: PageProps) {
         <Socket.Provider value={socket}>
           <Container>
             <Row className="display-5 text-center">
-              <Col>Ficha do Personagem</Col>
+              <Col>Pica</Col>
             </Row>
             <Row className="mb-3">
               <PlayerInfoContainer

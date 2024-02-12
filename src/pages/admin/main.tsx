@@ -56,7 +56,7 @@ function AdminPanel({
         <Socket.Provider value={socket}>
           <Container className="px-3">
             <Row className="display-5 text-center">
-              <Col>Você é o Fodão</Col>
+              <Col>Painel do Mestre</Col>
             </Row>
             <Row className="my-4">
               <AdminEnvironmentConfigurations environment={environment} />
