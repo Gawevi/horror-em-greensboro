@@ -1,0 +1,291 @@
+$primary: #0d6efd;
+$secondary: #6c757d;
+@import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+
+@mixin theme-components($dark-theme) {
+	$background-color: #ffffff;
+	$text-color: #000000;
+	$skill-container-outline-color: #111111;
+	$player-container-background-color: #cecece;
+
+	@if $dark-theme {
+		$background-color: #111111;
+		$text-color: #ffffff;
+		$skill-container-outline-color: #ffffff;
+		$player-container-background-color: #252525;
+	}
+
+	background-color: $background-color;
+	color: $text-color;
+
+	// .btn-primary {
+	// 	@include button-variant($background-color, $background-color);
+	// }
+	//
+	// .btn-secondary {
+	// 	@include button-variant($background-color, $background-color);
+	// }
+
+	.table {
+		color: $text-color;
+		tr {
+			border-color: gray;
+		}
+	}
+
+	.toast-body {
+		color: white;
+	}
+
+	.skill-container {
+		background-color: $background-color;
+		border-radius: 20px;
+
+		&:hover {
+			background-color: $skill-container-outline-color;
+			color: invert($text-color);
+
+			input {
+				background-color: inherit;
+				color: inherit;
+			}
+		}
+	}
+
+	.theme-element {
+		background-color: $background-color;
+		color: $text-color;
+
+		&:focus {
+			background-color: $background-color;
+			color: $text-color;
+		}
+		&:disabled {
+			background-color: $background-color;
+			color: rgba($text-color, 0.3);
+		}
+	}
+
+	.modal-content {
+		background-color: $background-color;
+		color: $text-color;
+	}
+
+	.modal-header,
+	.modal-body,
+	.modal-footer {
+		@if $dark-theme {
+			border-color: lighten($background-color, 20%);
+		} @else {
+			border-color: gray;
+		}
+	}
+
+	.list-group-item {
+		background-color: $player-container-background-color;
+		color: $text-color;
+
+		&.selected {
+			@if $dark-theme {
+				background-color: lighten($player-container-background-color, 10%);
+			} @else {
+				background-color: darken($player-container-background-color, 10%);
+			}
+		}
+	}
+
+	.spell-description {
+		color: rgba($text-color, 0.75);
+	}
+
+	.player-container {
+		@extend .data-container;
+		background-color: $player-container-background-color;
+	}
+
+	.list-group {
+		background-color: $player-container-background-color;
+		border-radius: 0;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+
+		.list-group-item {
+			padding: 0.5rem 1rem;
+		}
+
+		input.bottom-text {
+			background-color: inherit;
+		}
+	}
+}
+
+@mixin custom_scrollbar {
+	/* width */
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: inherit;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: #888;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: #555;
+	}
+}
+
+body {
+	padding: 0;
+	font-family: 'Cinzel', serif;
+
+	&.dark {
+		@include theme-components($dark-theme: true);
+	}
+
+	&.light {
+		@include theme-components($dark-theme: false);
+	}
+}
+
+.custom-font {
+	font-family: 'OpenRPG Custom Font';
+}
+
+.fade:not(.show) {
+	pointer-events: none;
+}
+
+.data-container {
+	border-style: solid;
+	border-width: 1px;
+	border-color: gray;
+	border-radius: 20px;
+}
+
+.bottom-text {
+	outline: 0;
+	border-width: 0 0 2px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+$navbar-background-color: #303030;
+
+.form-control,
+.form-select {
+	border-color: lighten($navbar-background-color, 25%);
+	&:focus {
+		border-color: $navbar-background-color;
+		box-shadow: inset 0 0.25rem 0.25rem rgb(0 0 0 / 8%), 0 0 8px #ff0000;
+	}
+}
+
+.navbar {
+	background-color: $navbar-background-color;
+}
+
+.editor-container {
+	@include custom_scrollbar();
+}
+
+.wrapper {
+	@extend .data-container;
+	overflow-y: auto;
+	max-height: 260px;
+
+	.list-group {
+		min-height: 200px;
+	}
+
+	@include custom_scrollbar();
+}
+
+.shadow {
+	transition: filter 0.25s ease;
+	&.show {
+		filter: brightness(25%);
+		transition: filter 0.5s ease-out;
+	}
+}
+
+.popout {
+	transform: scale(0);
+	transition: transform 0.6s ease-in;
+	&.show {
+		transform: scale(1);
+		transition: transform 0.5s ease-out;
+	}
+}
+
+$proggress-bar-height: 40px;
+
+.progress-container {
+	position: relative;
+
+	.progress {
+		height: $proggress-bar-height;
+	}
+
+	.pogress-label {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		color: white;
+		margin: 0;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+	}
+
+	.progress-button-left {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 15px;
+
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		button {
+			color: white;
+			background: none;
+			border: none;
+			padding: 0;
+		}
+	}
+
+	.progress-button-right {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		right: -10px;
+
+		display: flex;
+		align-items: center;
+		height: 100%;
+
+		button {
+			color: white;
+			background: none;
+			border: none;
+			padding: 0;
+		}
+	}
+}
+
+.attribute-dice {
+	max-height: $proggress-bar-height;
+}

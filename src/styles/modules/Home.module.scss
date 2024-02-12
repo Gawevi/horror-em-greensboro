@@ -1,0 +1,16 @@
+.link {
+    text-decoration: none;
+    color: inherit !important;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #ff000070;
+    &:hover,
+    &:active {
+        padding: 5px;
+        border-width: 0;
+        border-radius: 5px;
+        background-color: #ff000070;
+    }
+    transition-property: padding, border;
+    transition-duration: 250ms;
+}
