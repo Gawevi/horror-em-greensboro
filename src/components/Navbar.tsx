@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <BootstrapNavbar sticky="top" expand="sm" className="mb-3" variant="dark">
       <Container fluid>
-        <BootstrapNavbar.Brand>Horror em Greensboro</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand>Open RPG</BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle />
         <BootstrapNavbar.Collapse>
           <Nav className="me-auto">
